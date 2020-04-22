@@ -1,0 +1,171 @@
+﻿<!-- Hecho por el grupo 04 - Aitor Alonso, Jesus Chamizo, Eduardo Da Silva -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PayTime04</title>
+    <link rel="icon" type="image" href="./img/cerdotiempo.jpg">
+    
+    <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+    
+  </head>
+  <body>
+    <header>
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center">PAYTIME04</a>
+            <img src="./img/cerditiempo.png" height="60" width="90"/>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="">Inicio</a></li>
+              <li><a href="#quienes_somos">Quienes somos</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </div>
+        </nav>
+        
+      </div>      
+     
+      <h1 class="header center teal-text text-lighten-2 z-depth-5">PAYTIME04</h1>
+      <h5 class="header center light">Cuando por fin el tiempo es oro</h5>
+    </header>
+    
+  
+    <div class="container">
+  <h3 id="contacto" class="center">Registrate ahora</h3>
+  <div class="row">
+    <form class="col s12" id="formulario">
+      <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <input placeholder="Nombre" id="first_name" type="text" class="validate" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <input placeholder="Email" id="signup_email" type="email" class="validate" required>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <input placeholder="Contraseña" id="signup_password" type="password" class="validate" required>
+        </div>
+        
+      </div>
+      <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <input placeholder="Repite contraseña" id="signup_sec_password" type="password" class="validate" required>
+        </div>
+        
+      </div>
+      
+      <div class="row">
+      <div class="col s4 offset-s4">
+      <label>
+        <input id="checkterms"  type="checkbox" />
+        <span>Acepto almacenar mi informacion en PAYTIME04</span>
+      </label>
+      </div>
+      </div>
+      
+      
+  
+  <div class="row">
+      <div class="col s4 offset-s4">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
+        <i class="material-icons right">send</i>
+      </button>
+      </div>
+      </div>
+  
+    </form>
+  </div>
+        </div>
+  
+    <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <p class="grey-text text-lighten-4">PAYTIME04 es una app ficticia desarrollada para la asignatura de Usabilidad y Accesibilidad. Ninguna información aquí presente es real.</p>
+              </div>
+              <div class="col l4 offset-l2 s1">
+                <h5 class="white-text">Enlaces de interes</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="https://www.ull.es">Pagina oficial ULL</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://play.google.com/store">Descarga la APP en Android</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © Grupo 04 de Usabilidad y Accesibilidad 19/20
+            </div>
+          </div>
+        </footer>
+        
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+        <script>
+          var firebaseConfig = {
+            apiKey: "AIzaSyBpZNWRilnAUAV3H3sdyiCGjwo2oP2_BCY",
+            authDomain: "uyatest-23c42.firebaseapp.com",
+            databaseURL: "https://uyatest-23c42.firebaseio.com",
+            projectId: "uyatest-23c42",
+            storageBucket: "uyatest-23c42.appspot.com",
+            messagingSenderId: "763368944305",
+            appId: "1:763368944305:web:f31dc26347b63edfdaa890"
+          };
+          firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        
+      
+      
+      const signupForm = document.querySelector('#formulario');
+signupForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+    
+    const name = signupForm['first_name'].value;
+    const email = signupForm['signup_email'].value;
+    const password = signupForm['signup_password'].value;
+    const password2 = signupForm['signup_sec_password'].value;
+    const terms = signupForm['checkterms'].value;
+
+    if((password==password2)&&(terms)){
+		// Registrar a los usuarios con los datos obtenidos
+		  var referencia = database.ref(name);
+      //Escribir un documento
+      referencia.set({
+            usuario: name,
+            correo: email,
+            contraseña: password
+        });
+      
+            } 
+            else {
+		if(password!=password2){
+			window.alert("Las contraseñas no coinciden");
+		}else{
+			window.alert("Acepte los terminos de nuestra web.");
+		}
+	}
+
+});
+      
+      
+      
+        
+        
+        
+        
+        
+        </script>
+        <!-- <script src="./js/auth.js"></script> -->
+        
+  </body>
+  
+</html>
