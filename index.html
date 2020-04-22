@@ -110,7 +110,7 @@
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
-        <script>
+       <script>
           var firebaseConfig = {
             apiKey: "AIzaSyBpZNWRilnAUAV3H3sdyiCGjwo2oP2_BCY",
             authDomain: "uyatest-23c42.firebaseapp.com",
@@ -123,49 +123,8 @@
           firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
         
-      
-      
-      const signupForm = document.querySelector('#formulario');
-signupForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-    
-    const name = signupForm['first_name'].value;
-    const email = signupForm['signup_email'].value;
-    const password = signupForm['signup_password'].value;
-    const password2 = signupForm['signup_sec_password'].value;
-    const terms = signupForm['checkterms'].value;
-
-    if((password==password2)&&(terms)){
-		// Registrar a los usuarios con los datos obtenidos
-		  var referencia = database.ref(name);
-      //Escribir un documento
-      referencia.set({
-            usuario: name,
-            correo: email,
-            contraseña: password
-        });
-      
-            } 
-            else {
-		if(password!=password2){
-			window.alert("Las contraseñas no coinciden");
-		}else{
-			window.alert("Acepte los terminos de nuestra web.");
-		}
-	}
-
-});
-      
-      
-      
-        
-        
-        
-        
-        
         </script>
-        <!-- <script src="./js/auth.js"></script> -->
-        
+        <script src="./js/auth.js"></script>
   </body>
   
 </html>
