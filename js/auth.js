@@ -3,7 +3,6 @@
 const signupForm = document.querySelector('#formulario');
 signupForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	var referencia = database.ref('Usuarios_Database')
 	//Obtenermos los valores del formulario
 	const name = signupForm['first_name'].value;
 	const email = signupForm['signup_email'].value;
@@ -13,8 +12,9 @@ signupForm.addEventListener('submit', (e) => {
 
     	if((password==password2)&&(terms)){
           	//var referencia = database.ref(name);
+		var referencia = database.ref(name);
       		//Add users data
-		referencia.child(name).set({
+		referencia.set({
             		usuario: name,
             		correo: email,
            		contraseña: password
