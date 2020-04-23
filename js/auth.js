@@ -1,10 +1,9 @@
 //Fichero JS autentificación
 //Grupo 04 UyA - Aitor Alonso, Jesús Chamizo, Eduardo Da Silva
-var referencia = database.ref('Usuarios_Database')
 const signupForm = document.querySelector('#formulario');
 signupForm.addEventListener('submit', (e) => {
 	e.preventDefault();
-	
+	var referencia = database.ref('Usuarios_Database')
 	//Obtenermos los valores del formulario
 	const name = signupForm['first_name'].value;
 	const email = signupForm['signup_email'].value;
